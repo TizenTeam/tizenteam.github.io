@@ -283,6 +283,7 @@ app.query = function(url)
   url = (url) || window.form.url.value;
   this.log("query: " + url);
   this.get("/things", function(err, data) {
+    if (err || !data) throw err;
     var list = document.getElementById('items');
     list.innerHTML = "";  // Clean list
     var items = data && JSON.parse(data) || [];
